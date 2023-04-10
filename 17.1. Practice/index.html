@@ -1,0 +1,97 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const courses = [
+            {
+                "id": 15,
+                "title": "HTML CSS Pro",
+                "description": "Từ cơ bản tới chuyên sâu, thực hành 8 dự án, hàng trăm bài tập, trang hỏi đáp riêng, cấp chứng chỉ sau khóa học và mua một lần học mãi mãi.",
+                "publishedAt": "2022-08-18T17:00:00",
+
+            },
+            {
+                "id": 19,
+                "title": "JavaScript Pro",
+                "description": "Khóa học JavaScript Pro",
+                "publishedAt": "2023-04-30T17:00:00",
+
+            },
+            {
+                "id": 20,
+                "title": "ReactJS Pro",
+                "description": "Khóa học ReactJS Pro",
+                "publishedAt": "2023-07-31T17:00:00",
+
+            }
+        ]
+/*
+        function CourseItem(props) {
+            return (
+                <div>
+                    <h2>{props.title}</h2>
+                    <p>{props.description}</p>
+                    <p>{props.publishedAt}</p>
+                </div>
+            )
+        }
+
+
+        function App() {
+            return (
+                <div id='wrapper'>
+                    {courses.map(course =>
+                    (<CourseItem
+                        key={course.id}
+                        title={course.title}
+                        description={course.description}
+                        publishedAt={course.publishedAt}
+                    />
+                    ))}
+                </div>
+            )
+        }
+ */
+
+        // Cách trình bày khác tương tự
+
+        function CourseItem({course}) {
+            return (
+                <div>
+                    <h2>{course.title}</h2>
+                    <p>{course.description}</p>
+                    <p>{course.publishedAt}</p>
+                </div>
+            )
+        }
+
+        function App() {
+            return (
+                <div id='wrapper'>
+                    {courses.map(course =>
+                    <CourseItem
+                        key={course.id}
+                        course = {course} 
+                    />
+                    )}
+                </div>
+            )
+
+        }
+        ReactDOM.render(<App />, document.getElementById('root'))
+    </script>
+    <script src="./javascript.js"></script>
+</body>
+
+</html>

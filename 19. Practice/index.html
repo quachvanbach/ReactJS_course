@@ -1,0 +1,89 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+        const courses = [
+            {
+                courseName: 'HTML/CSS',
+                price: '$100',
+            },
+            {
+                courseName: 'Javascript',
+                price: '$200',
+            },
+            {
+                courseName: 'ReactJS',
+                price: '$500',
+            }
+        ]
+
+/*         function CourseItem(props) {
+            return (
+                <div>
+                    <h1 onClick={() => alert(
+                        props.courseName)}>{props.courseName}</h1>
+                    <h2>{props.price}</h2>
+                </div>
+            )
+        }
+
+        function App() {
+            return (
+                <div id="wrapper">
+                    {courses.map((course, index) =>
+                        <CourseItem
+                            key={index}
+                            courseName={course.courseName}
+                            price={course.price}
+                        />
+                    )}
+                </div>
+            )
+        } */
+
+        // Chữa bài
+
+        function CourseItem(props) {
+            return (
+                <div>
+                    <h1 onClick={() => props.onClick(props)}>{props.courseName}</h1>
+                    <h2>{props.price}</h2>
+                </div>
+            )
+        }
+
+        function App() {
+
+            const handleClick = (course) => alert(course.courseName)
+            return (
+                <div id="wrapper">
+                    {courses.map((course) =>
+                        <CourseItem
+                            key={course.id}
+                            courseName={course.courseName}
+                            price={course.price}
+                            onClick={handleClick}
+                        />
+                    )}
+                </div>
+            )
+        }
+
+        ReactDOM.render(<App />, document.getElementById('app'))
+    </script>
+    <script src="./javascript.js"></script>
+</body>
+
+</html>

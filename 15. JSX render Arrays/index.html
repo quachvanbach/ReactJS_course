@@ -20,12 +20,29 @@
         ]
 
         const jsxCourses = <ul>
-            {courses.map(course =>
-                <li>{course.name}</li>
+            {courses.map((course, index) =>
+                <li key={index}>{course.name}</li>
             )}
         </ul>
+        ReactDOM.render(jsxCourses, document.getElementById('root'));
 
-        ReactDOM.render(jsxCourses,document.getElementById('root'));
+        // Cách để render 2 Element cùng 1 lúc mà không cần tạo thêm thẻ chứa:
+        const jsxFragment = (
+            <React.Fragment>
+                <h1>Heading 1</h1>
+                <h2>Heading 2</h2>
+            </React.Fragment>
+        )
+        // ReactDOM.render(jsxFragment, document.getElementById('root')); 
+
+        // Áp dụng React.Fragment không dùng JSX:
+        const notJSXFrag = React.createElement(
+            React.Fragment,
+            null,
+            React.createElement('h1', null, 'Heading 1'),
+            React.createElement('h2', null, 'Heading 2')
+        )
+        // ReactDOM.render(notJSXFrag, document.getElementById('root'));
     </script>
 </body>
 

@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quy ước đặt tên components</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+        /***  Quy ước đặt tên components: ***/
+        // - Viêt hoa chữ cái đầu tiên của từ cho component tự định nghĩa.
+        // - Các dữ liệu kiểu Boolean, null, undefine se không được render
+        // - Chọn component trong 1 object:
+
+        const Form = {
+            Input() {
+                return <input />
+            },
+            Checkbox() {
+                return <input type="checkbox" />
+            },
+            Password() {
+                return <input type="password" />
+            },
+            Button() {
+                return <input type="button" />
+            }
+        }
+
+        function App() {
+
+            const type = "Password";
+
+            const Component = Form[type]
+
+            return (
+                <div id="wrapper">
+                    <Form.Input />
+                    <Component />
+                </div>
+            )
+        }
+
+
+        ReactDOM.render(<App />, document.getElementById('app'))
+    </script>
+    <script src="./javascript.js"></script>
+</body>
+
+</html>
